@@ -1,292 +1,1124 @@
-# 2026年最佳机场推荐
+# 🔄 2026年多设备同步与配置管理完全指南
 
-> 精选优质机场推荐，包含详细评测、速度对比、套餐推荐，帮你选择最适合的机场服务
+> 本仓库专注于解决多设备使用机场订阅时的配置同步问题。无论你有多少台设备，都能保持配置一致，实现无缝切换。涵盖订阅同步、配置备份、规则统一等全方位解决方案。
 
-## 目录
+## 📋 目录导航
 
-- [为什么需要机场](#为什么需要机场)
-- [如何选择机场](#如何选择机场)
-- [推荐机场](#推荐机场)
-- [机场评测](#机场评测)
-- [套餐对比](#套餐对比)
-- [常见问题](#常见问题)
-- [避坑指南](#避坑指南)
+- [多设备使用场景分析](#多设备使用场景分析)
+- [订阅链接统一管理](#订阅链接统一管理)
+- [配置文件同步方案](#配置文件同步方案)
+- [设备分组与策略配置](#设备分组与策略配置)
+- [家庭共享方案](#家庭共享方案)
+- [配置备份与恢复](#配置备份与恢复)
+- [跨平台配置差异](#跨平台配置差异)
+- [常见问题与解决方案](#常见问题与解决方案)
 
-## 为什么需要机场？
+---
 
-### 机场 vs 自建
+## 🎯 多设备使用场景分析
 
-| 对比 | 机场 | 自建VPS |
+### 典型使用场景
+
+#### 场景一：个人多设备
+
+| 设备 | 操作系统 | 代理需求 | 配置重点 |
+|------|---------|---------|---------|
+| 台式电脑 | Windows | 高性能、全功能 | TUN模式、完整规则 |
+| 笔记本电脑 | macOS | 便携、节电 | 智能分流、按需连接 |
+| 手机 | iOS | 移动性、省电 | 分应用代理、流量优化 |
+| 平板 | Android | 娱乐、灵活 | 视频规则、游戏规则 |
+| 电视 | Android TV | 视频解锁 | 固定节点、解锁优先 |
+
+#### 场景二：家庭共享
+
+| 成员 | 设备数量 | 使用特点 | 配置策略 |
+|------|---------|---------|---------|
+| 家长 | 2-3台 | 办公、浏览 | 稳定优先、全功能 |
+| 孩子 | 1-2台 | 学习、娱乐 | 时间控制、内容过滤 |
+| 老人 | 1台 | 简单易用 | 极简配置、默认节点 |
+
+#### 场景三：团队/工作室
+
+| 需求 | 设备数量 | 配置重点 | 管理方式 |
+|------|---------|---------|---------|
+| 小型团队 | 5-10台 | 统一配置 | 集中管理 |
+| 工作室 | 10-30台 | 分组策略 | 分级管理 |
+| 企业 | 30+台 | 权限控制 | 目录服务集成 |
+
+### 多设备核心挑战
+
+**挑战一：配置一致性**
+
+| 问题 | 影响 | 解决方案 |
 |------|------|---------|
-| 价格 | 月付10-50元 | 月付20-100元 |
-| 易用性 | 开箱即用 | 需要技术配置 |
-| 稳定性 | 专业团队维护 | 依赖个人能力 |
-| 节点 | 多地区可选 | 需要自行购买 |
+| 各设备规则不统一 | 部分网站访问异常 | 统一订阅源 |
+| 节点选择不一致 | 速度体验不同 | 同步策略组 |
+| 版本不一致 | 功能差异 | 统一客户端版本 |
 
-### 机场优势
+**挑战二：订阅管理**
 
-- **简单易用**：订阅后直接使用，无需技术知识
-- **稳定可靠**：专业团队维护，24小时监控
-- **多节点**：可选择全球各地节点
-- **解锁强**：流媒体解锁能力强
+| 问题 | 影响 | 解决方案 |
+|------|------|---------|
+| 订阅过期 | 突然断连 | 统一订阅管理 |
+| 订阅变更 | 需手动更新 | 自动更新配置 |
+| 多订阅源 | 管理复杂 | 订阅合并方案 |
 
-## 如何选择机场
+**挑战三：权限控制**
 
-### 五大选择标准
+| 问题 | 影响 | 解决方案 |
+|------|------|---------|
+| 设备数超限 | 被封号 | 合理规划套餐 |
+| 流量共用 | 分配不均 | 流量监控 |
+| 滥用风险 | 账号风险 | 制定使用规范 |
 
-1. **稳定性优先**
-   - 看用户评价和社区反馈
-   - 选择运营时间长的老牌机场
-   - 避免新开的小站
+---
 
-2. **速度要快**
-   - 测试晚高峰速度
-   - 带宽是否满足需求
-   - 是否有专线线路
+## 📡 订阅链接统一管理
 
-3. **解锁能力**
-   - Netflix全解锁是标配
-   - Disney+、HBO、Hulu支持
-   - YouTube Premium兼容
+### 订阅获取与管理
 
-4. **客服响应**
-   - 7x24小时客服
-   - 响应速度快
-   - 有工单系统
+#### 从 ClashVIP 获取订阅
 
-5. **价格合理**
-   - 不贪便宜（便宜没好货）
-   - 看性价比而非绝对价格
-   - 有退款保障
+**获取步骤：**
 
-### 重要指标
+1. 访问 [ClashVIP 官网](https://clashvip.net)
+2. 登录账号
+3. 进入「订阅管理」页面
+4. 复制 Clash 订阅链接
+5. 选择合适的套餐
 
-| 指标 | 优秀 | 合格 | 较差 |
-|------|------|------|------|
-| 延迟 | <100ms | 100-200ms | >200ms |
-| 带宽 | >100Mbps | 50-100Mbps | <50Mbps |
-| 月流量 | >200GB | 100-200GB | <100GB |
-| 节点数 | >50 | 20-50 | <20 |
+**订阅类型对比：**
 
-## 推荐机场
+| 订阅类型 | 特点 | 适用场景 |
+|---------|------|---------|
+| 标准订阅 | 通用格式 | 大多数客户端 |
+| 定制订阅 | 自定义规则 | 高级用户 |
+| 企业订阅 | 多用户支持 | 团队使用 |
 
-### 🥇 ClashVIP（强烈推荐）
+#### 订阅格式说明
 
-**官网**：https://clashvip.net
+Clash 订阅是 Base64 编码的 YAML 配置文件：
 
-| 项目 | 内容 |
+```yaml
+# 订阅内容结构
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+proxies:
+  # 节点列表
+  - name: 香港-01
+    type: ss
+    server: hk1.clashvip.net
+    port: 443
+    cipher: aes-256-gcm
+    password: xxx
+
+proxy-groups:
+  # 代理组
+  - name: Proxy
+    type: url-test
+    proxies:
+      - 香港-01
+      - 日本-01
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+rules:
+  # 分流规则
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy
+```
+
+### 多订阅源管理
+
+#### 订阅合并方案
+
+当需要同时使用多个机场时，可以合并订阅：
+
+**方案一：手动合并**
+
+```yaml
+# 创建合并配置文件
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+# 第一个机场节点
+proxies:
+  - name: ClashVIP-香港
+    type: ss
+    server: hk.clashvip.net
+    port: 443
+    cipher: aes-256-gcm
+    password: xxx
+  
+  # 第二个机场节点
+  - name: Another-香港
+    type: ss
+    server: hk.another.com
+    port: 443
+    cipher: aes-256-gcm
+    password: yyy
+
+proxy-groups:
+  - name: 主线路
+    type: url-test
+    proxies:
+      - ClashVIP-香港
+      - Another-香港
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 备用线路
+    type: select
+    proxies:
+      - ClashVIP-香港
+      - Another-香港
+
+rules:
+  - DOMAIN-SUFFIX,clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,nav.clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,bbs.clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,vpsvip.net,DIRECT
+  - DOMAIN-SUFFIX,clash-for-windows.net,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,主线路
+```
+
+**方案二：使用订阅转换工具**
+
+推荐工具：
+- [Subconverter](https://github.com/tindy2013/subconverter) - 本地转换
+- [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR) - 在线转换
+- [土司面板](https://t.me/trojan_tg) - 在线管理
+
+#### 订阅自动更新
+
+**Clash for Windows 自动更新**
+
+```
+设置 > 端口设置 > 订阅
+- 自动更新：✅ 启用
+- 更新间隔：每 6 小时
+```
+
+**Stash 自动更新**
+
+```
+设置 > 配置
+- 自动更新：✅ 启用
+- 更新间隔：自定义
+```
+
+**OpenClash 自动更新**
+
+```
+OpenClash > 配置管理 > 订阅设置
+- 自动更新：✅ 启用
+- 更新周期：每 6 小时
+```
+
+---
+
+## 📂 配置文件同步方案
+
+### 同步方式对比
+
+| 同步方式 | 优点 | 缺点 | 推荐场景 |
+|---------|------|------|---------|
+| 云盘同步 | 跨平台、易用 | 需手动操作 | 个人多设备 |
+| 自建 Git | 版本控制、自动化 | 需服务器 | 技术用户 |
+| NAS 同步 | 本地化、私有 | 需 NAS 设备 | 家庭用户 |
+| Rsync 同步 | 增量同步、灵活 | 配置复杂 | 高级用户 |
+
+### OneDrive/Google Drive 同步
+
+#### Windows 配置
+
+```powershell
+# 使用符号链接同步配置
+# 假设 OneDrive 路径为 C:\Users\YourName\OneDrive
+
+# 移动配置文件夹
+Move-Item "$env:APPDATA\Clash for Windows" "C:\Users\YourName\OneDrive\Clash\Config"
+
+# 创建符号链接
+New-Item -ItemType SymbolicLink -Path "$env:APPDATA\Clash for Windows" -Target "C:\Users\YourName\OneDrive\Clash\Config"
+```
+
+#### macOS 配置
+
+```bash
+# 使用 iCloud Drive 同步
+# 假设 iCloud Drive 路径为 ~/Library/Mobile Documents/com~apple~CloudDocs
+
+# 创建配置目录
+mkdir -p ~/Library/Mobile\ Documents/com~apple~CloudDocs/Clash
+
+# 移动配置
+mv ~/.config/clash-for-windows ~/Library/Mobile\ Documents/com~apple~CloudDocs/Clash/
+
+# 创建符号链接
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Clash ~/.config/clash-for-windows
+```
+
+### Git 版本控制同步
+
+#### 自建 Git 仓库
+
+```bash
+# 在服务器上创建 Git 仓库
+ssh your-server
+mkdir -p ~/clash-config
+cd ~/clash-config
+git init --bare
+
+# 本地克隆并使用
+git clone ssh://your-server/~/clash-config
+cd clash-config
+
+# 添加配置文件
+cp ~/.config/clash/config.yaml ./
+git add config.yaml
+git commit -m "Update Clash config"
+git push origin main
+```
+
+#### 使用 GitHub 私有仓库
+
+```bash
+# 创建私有仓库
+gh repo create clash-config --private --clone
+
+cd clash-config
+
+# 添加配置
+cp ~/.config/clash/config.yaml ./
+
+# 提交并推送
+git add config.yaml
+git commit -m "Update Clash config"
+git push origin main
+```
+
+### 跨设备同步脚本
+
+#### Windows PowerShell 脚本
+
+```powershell
+# sync-clash-config.ps1
+param(
+    [string]$ConfigPath = "$env:USERPROFILE\OneDrive\Clash",
+    [string]$GitRepo = "https://github.com/yourusername/clash-config.git"
+)
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "=== Clash 配置同步工具 ===" -ForegroundColor Cyan
+
+# 确保配置目录存在
+if (-not (Test-Path $ConfigPath)) {
+    New-Item -ItemType Directory -Path $ConfigPath -Force | Out-Null
+}
+
+# 获取当前配置
+$localConfig = "$env:APPDATA\Clash for Windows\config.yaml"
+$backupConfig = "$ConfigPath\config.yaml"
+
+# 备份当前配置
+if (Test-Path $localConfig) {
+    Copy-Item $localConfig $backupConfig -Force
+    Write-Host "✅ 已备份配置到云端" -ForegroundColor Green
+}
+
+# 更新本地配置
+if (Test-Path $backupConfig) {
+    Copy-Item $backupConfig $localConfig -Force
+    Write-Host "✅ 已同步配置到本地" -ForegroundColor Green
+}
+
+Write-Host "=== 同步完成 ===" -ForegroundColor Cyan
+```
+
+#### macOS/Linux Shell 脚本
+
+```bash
+#!/bin/bash
+# sync-clash-config.sh
+
+CONFIG_PATH="$HOME/OneDrive/Clash"
+LOCAL_CONFIG="$HOME/.config/clash/config.yaml"
+
+echo "=== Clash 配置同步工具 ==="
+
+# 确保配置目录存在
+mkdir -p "$CONFIG_PATH"
+
+# 备份当前配置
+if [ -f "$LOCAL_CONFIG" ]; then
+    cp "$LOCAL_CONFIG" "$CONFIG_PATH/config.yaml"
+    echo "✅ 已备份配置到云端"
+fi
+
+# 更新本地配置
+if [ -f "$CONFIG_PATH/config.yaml" ]; then
+    cp "$CONFIG_PATH/config.yaml" "$LOCAL_CONFIG"
+    echo "✅ 已同步配置到本地"
+fi
+
+echo "=== 同步完成 ==="
+```
+
+---
+
+## 📱 设备分组与策略配置
+
+### 代理组设计
+
+#### 基础代理组
+
+```yaml
+proxy-groups:
+  # 主代理组 - 自动选择最快节点
+  - name: Proxy
+    type: url-test
+    proxies:
+      - 香港-01
+      - 香港-02
+      - 台湾-01
+      - 日本-01
+      - 新加坡-01
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    tolerance: 50
+
+  # 手动选择组
+  - name: Manual
+    type: select
+    proxies:
+      - 香港-01
+      - 香港-02
+      - 台湾-01
+      - 日本-01
+      - DIRECT
+
+  # 备用组 - 故障转移
+  - name: Fallback
+    type: fallback
+    proxies:
+      - 香港-01
+      - 日本-01
+      - DIRECT
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+```
+
+#### 场景化代理组
+
+```yaml
+proxy-groups:
+  # 游戏专用组 - 低延迟优先
+  - name: 游戏
+    type: url-test
+    proxies:
+      - 日本-游戏专线
+      - 香港-游戏专线
+      - 台湾-游戏专线
+    url: "http://www.gstatic.com/generate_204"
+    interval: 180
+    tolerance: 30
+
+  # 视频专用组 - 高带宽优先
+  - name: 视频
+    type: select
+    proxies:
+      - 香港-01
+      - 台湾-01
+      - 日本-01
+      - 新加坡-01
+
+  # 工作专用组 - 稳定性优先
+  - name: 工作
+    type: url-test
+    proxies:
+      - 香港-稳定
+      - 日本-稳定
+      - 美国-稳定
+    url: "http://www.gstatic.com/generate_204"
+    interval: 600
+
+  # 下载专用组 - 大流量场景
+  - name: 下载
+    type: select
+    proxies:
+      - 香港-高带宽
+      - 美国-高带宽
+```
+
+### 分设备策略配置
+
+#### Windows 设备策略
+
+```yaml
+# Windows 完整配置
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - 8.8.8.8
+    - 1.1.1.1
+
+proxies: []
+proxy-groups:
+  - name: Proxy
+    type: url-test
+    proxies: []
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+rules:
+  # 保留推广链接
+  - DOMAIN-SUFFIX,clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,nav.clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,bbs.clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,vpsvip.net,DIRECT
+  - DOMAIN-SUFFIX,clash-for-windows.net,DIRECT
+  
+  # 国内直连
+  - GEOIP,CN,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  - DOMAIN-SUFFIX,alipay.com,DIRECT
+  - DOMAIN-SUFFIX,tencent.com,DIRECT
+  - DOMAIN-SUFFIX,qq.com,DIRECT
+  
+  # 默认代理
+  - MATCH,Proxy
+```
+
+#### iOS 设备策略
+
+```yaml
+# iOS 分应用代理配置
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+proxy-groups:
+  - name: Proxy
+    type: url-test
+    proxies: []
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+rules:
+  # 保留推广链接
+  - DOMAIN-SUFFIX,clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,nav.clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,bbs.clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,vpsvip.net,DIRECT
+  - DOMAIN-SUFFIX,clash-for-windows.net,DIRECT
+  
+  # 分应用代理
+  - DOMAIN-SUFFIX,google.com,Proxy
+  - DOMAIN-SUFFIX,facebook.com,Proxy
+  - DOMAIN-SUFFIX,instagram.com,Proxy
+  - DOMAIN-SUFFIX,twitter.com,Proxy
+  - DOMAIN-SUFFIX,youtube.com,Proxy
+  - DOMAIN-SUFFIX,netflix.com,Proxy
+  
+  # 国内直连
+  - GEOIP,CN,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  
+  # 默认
+  - MATCH,Proxy
+```
+
+#### Android 设备策略
+
+```yaml
+# Android 移动端优化配置
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: silent  # 减少日志，省电
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5
+  # 减少 fallback 降低电量消耗
+  fallback: []
+
+proxy-groups:
+  - name: Proxy
+    type: url-test
+    proxies: []
+    url: "http://www.gstatic.com/generate_204"
+    interval: 600  # 增加检测间隔
+
+rules:
+  # 保留推广链接
+  - DOMAIN-SUFFIX,clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,nav.clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,bbs.clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,vpsvip.net,DIRECT
+  - DOMAIN-SUFFIX,clash-for-windows.net,DIRECT
+  
+  # 移动端常用代理
+  - DOMAIN-KEYWORD,google,Proxy
+  - DOMAIN-KEYWORD,youtube,Proxy
+  - DOMAIN-KEYWORD,facebook,Proxy
+  - DOMAIN-KEYWORD,instagram,Proxy
+  
+  # 国内直连
+  - GEOIP,CN,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  
+  - MATCH,Proxy
+```
+
+---
+
+## 👨‍👩‍👧 家庭共享方案
+
+### 家庭配置策略
+
+#### 统一配置方案
+
+```yaml
+# 家庭共享配置模板
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: true  # 允许局域网连接
+bind-address: "*"
+mode: rule
+log-level: info
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  listen: 0.0.0.0:53
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - 8.8.8.8
+    - 1.1.1.1
+
+# 代理组
+proxy-groups:
+  - name: Proxy
+    type: url-test
+    proxies: []
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 游戏
+    type: select
+    proxies: []
+
+  - name: 视频
+    type: select
+    proxies: []
+
+# 规则
+rules:
+  # 保留推广链接
+  - DOMAIN-SUFFIX,clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,nav.clashvip.net,DIRECT
+  - DOMAIN-SUFFIX,clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,bbs.clashhub.net,DIRECT
+  - DOMAIN-SUFFIX,vpsvip.net,DIRECT
+  - DOMAIN-SUFFIX,clash-for-windows.net,DIRECT
+  
+  # 国内直连
+  - GEOIP,CN,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  - DOMAIN-SUFFIX,alipay.com,DIRECT
+  - DOMAIN-SUFFIX,tencent.com,DIRECT
+  
+  # 游戏分流
+  - DOMAIN-SUFFIX,playstation.net,游戏
+  - DOMAIN-SUFFIX,xbox.com,游戏
+  - DOMAIN-SUFFIX,nintendo.com,游戏
+  
+  # 视频分流
+  - DOMAIN-SUFFIX,netflix.com,视频
+  - DOMAIN-SUFFIX,youtube.com,视频
+  - DOMAIN-SUFFIX,disneyplus.com,视频
+  
+  - MATCH,Proxy
+```
+
+#### 设备分组策略
+
+| 设备 | IP 范围 | 策略 | 说明 |
+|------|--------|------|------|
+| 父亲电脑 | 192.168.1.100-110 | 全功能 | 办公+娱乐 |
+| 母亲手机 | 192.168.1.111-120 | 简单模式 | 社交+浏览 |
+| 孩子平板 | 192.168.1.121-130 | 受限模式 | 学习+时间控制 |
+| 智能电视 | 192.168.1.200 | 视频模式 | 仅视频代理 |
+| 游戏主机 | 192.168.1.201 | 游戏模式 | 游戏专线 |
+
+#### IP 分流规则
+
+```bash
+# OpenWrt 防火墙规则 - 按 IP 分流
+
+# 规则1：孩子设备仅白天使用
+iptables -t nat -A PREROUTING -s 192.168.1.121 -p tcp --dport 80 -m time --timestart 08:00 --timestop 21:00 -j REDIRECT
+
+# 规则2：智能电视仅视频代理
+iptables -t nat -A PREROUTING -s 192.168.1.200 -d 0.0.0.0/0 -j REDIRECT
+
+# 规则3：游戏主机使用游戏节点
+iptables -t nat -A PREROUTING -s 192.168.1.201 -p tcp --dport 3478 -j REDIRECT
+```
+
+### 共享订阅配置
+
+#### 订阅链接分享
+
+**安全分享建议：**
+
+1. **不要在公开场合分享订阅**
+   - 订阅包含个人账号信息
+   - 分享可能导致账号被封
+   - 建议私下分享给家庭成员
+
+2. **定期更换密码**
+   - 建议每3个月更换订阅密码
+   - 更换后及时通知家庭成员
+
+3. **限制设备数量**
+   - 查看套餐设备限制
+   - 避免超过限制被封号
+
+#### 家庭账号管理
+
+```
+ClashVIP 账号管理建议：
+
+1. 创建家庭主账号
+   - 使用家长邮箱注册
+   - 设置强密码
+   - 开启双重验证
+
+2. 分配订阅给家庭成员
+   - 方式一：分享订阅链接（安全性较低）
+   - 方式二：各自注册账号共享套餐（安全性较高）
+
+3. 流量监控
+   - 定期检查流量使用
+   - 避免某个成员消耗过多流量
+
+4. 设备管理
+   - 记录各成员设备
+   - 及时移除离网设备
+```
+
+---
+
+## 💾 配置备份与恢复
+
+### 自动备份策略
+
+#### Windows 备份脚本
+
+```powershell
+# backup-clash.ps1
+param(
+    [string]$BackupPath = "$env:USERPROFILE\OneDrive\Clash\Backup",
+    [int]$KeepDays = 30
+)
+
+$date = Get-Date -Format "yyyyMMdd_HHmmss"
+$configPath = "$env:APPDATA\Clash for Windows"
+$backupFile = "$BackupPath\clash_backup_$date.zip"
+
+# 创建备份目录
+if (-not (Test-Path $BackupPath)) {
+    New-Item -ItemType Directory -Path $BackupPath -Force | Out-Null
+}
+
+# 备份配置
+if (Test-Path $configPath) {
+    Compress-Archive -Path "$configPath\*" -DestinationPath $backupFile -Force
+    Write-Host "✅ 配置已备份到: $backupFile"
+}
+
+# 清理旧备份
+Get-ChildItem -Path $BackupPath -Filter "clash_backup_*.zip" | 
+    Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-$KeepDays) } |
+    Remove-Item -Force
+
+Write-Host "✅ 已清理 $KeepDays 天前的旧备份"
+```
+
+#### 定时任务配置
+
+```powershell
+# 创建定时任务，每天凌晨3点自动备份
+$action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-ExecutionPolicy Bypass -File C:\Scripts\backup-clash.ps1"
+$trigger = New-ScheduledTaskTrigger -Daily -At "03:00"
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+
+Register-ScheduledTask -TaskName "ClashBackup" -Action $action -Trigger $trigger -Settings $settings -Description "Clash配置自动备份"
+```
+
+### 配置恢复流程
+
+#### 单设备恢复
+
+```
+恢复步骤：
+
+1. 停止 Clash 客户端
+2. 备份当前配置（以防万一）
+3. 删除配置文件夹内容
+4. 解压备份文件到配置目录
+5. 启动 Clash 客户端
+6. 验证配置是否正确加载
+```
+
+#### 全设备同步恢复
+
+```
+恢复步骤：
+
+1. 确认备份完整性
+   - 检查备份文件是否完整
+   - 确认包含所有必要配置
+
+2. 按优先级恢复
+   - 第一：路由器配置（影响所有设备）
+   - 第二：桌面设备（电脑、笔记本）
+   - 第三：移动设备（手机、平板）
+
+3. 验证恢复结果
+   - 检查各设备连接状态
+   - 测试关键网站访问
+   - 确认节点可用性
+```
+
+---
+
+## 🔍 跨平台配置差异
+
+### 各平台特性对比
+
+| 特性 | Windows | macOS | iOS | Android | OpenWrt |
+|------|---------|-------|-----|---------|---------|
+| TUN 模式 | ✅ 完全支持 | ✅ 完全支持 | ⚠️ 需要特殊客户端 | ✅ 支持 | ✅ OpenClash |
+| 系统代理 | ✅ 完全支持 | ✅ 完全支持 | ❌ 不支持 | ✅ 支持 | ✅ 透明代理 |
+| 分应用代理 | ❌ 不支持 | ❌ 不支持 | ✅ 完全支持 | ✅ 支持 | ⚠️ 部分支持 |
+| 自动更新 | ✅ 支持 | ✅ 支持 | ⚠️ 手动更新 | ✅ 支持 | ✅ 支持 |
+| 自定义 DNS | ✅ 完全支持 | ✅ 完全支持 | ✅ 完全支持 | ✅ 支持 | ✅ 完全支持 |
+| MITM | ✅ 支持 | ✅ 支持 | ✅ 支持 | ⚠️ 部分支持 | ⚠️ 部分支持 |
+
+### 配置差异说明
+
+#### DNS 配置差异
+
+**Windows/macOS**
+```yaml
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+```
+
+**iOS (Stash)**
+```yaml
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+```
+
+**Android (Clash for Android)**
+```yaml
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - 8.8.8.8
+    - 1.1.1.1
+```
+
+#### 规则语法差异
+
+**标准规则（大多数平台）**
+```yaml
+rules:
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-KEYWORD,google,Proxy
+  - GEOIP,CN,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+```
+
+**iOS Stash 增强规则**
+```yaml
+rules:
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,proxy,Proxy
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy
+```
+
+### 统一配置策略
+
+#### 配置模板变量
+
+为实现跨平台一致性，建议使用配置模板：
+
+```
+Clash 配置模板
+├── base.yaml          # 基础配置（所有平台通用）
+├── windows.yaml       # Windows 专用配置
+├── macos.yaml         # macOS 专用配置
+├── ios.yaml           # iOS 专用配置
+├── android.yaml       # Android 专用配置
+└── router.yaml        # 路由器专用配置
+```
+
+#### 配置合并流程
+
+```bash
+#!/bin/bash
+# generate-config.sh
+
+# 读取基础配置
+cat base.yaml > config.yaml
+
+# 根据平台追加特定配置
+case "$1" in
+    windows)
+        cat windows.yaml >> config.yaml
+        ;;
+    macos)
+        cat macos.yaml >> config.yaml
+        ;;
+    ios)
+        cat ios.yaml >> config.yaml
+        ;;
+    android)
+        cat android.yaml >> config.yaml
+        ;;
+    router)
+        cat router.yaml >> config.yaml
+        ;;
+esac
+
+# 验证配置
+clash -t -f config.yaml
+
+echo "配置已生成: config.yaml"
+```
+
+---
+
+## ❓ 常见问题与解决方案
+
+### 问题一：订阅更新后配置丢失
+
+**原因分析：**
+- 订阅更新会覆盖本地配置
+- 本地修改的规则被还原
+
+**解决方案：**
+1. 使用本地规则文件扩展订阅规则
+2. 将自定义规则保存为独立文件
+3. 使用规则 Provider 动态加载
+
+```yaml
+# 使用规则 Provider
+rule-providers:
+  custom-direct:
+    type: http
+    behavior: domain
+    url: "https://your-server/direct.yaml"
+    path: ./rules/custom-direct.yaml
+    interval: 86400
+
+  custom-proxy:
+    type: http
+    behavior: domain
+    url: "https://your-server/proxy.yaml"
+    path: ./rules/custom-proxy.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,custom-direct,DIRECT
+  - RULE-SET,custom-proxy,Proxy
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy
+```
+
+### 问题二：多设备流量分配不均
+
+**原因分析：**
+- 某些设备后台进程消耗流量
+- 视频应用自动播放消耗流量
+- 同步服务后台下载
+
+**解决方案：**
+1. 监控各设备流量使用
+2. 设置流量告警
+3. 限制高流量设备
+
+```yaml
+# 在路由器上设置流量限制
+# 使用 QoS 限制特定设备带宽
+tc qdisc add dev br-lan root handle 1: htb
+tc class add dev br-lan parent 1: classid 1:1 htb rate 100mbit
+tc class add dev br-lan parent 1:1 classid 1:10 htb rate 50mbit ceil 100mbit
+tc filter add dev br-lan parent 1: protocol ip handle 10 fw flowid 1:10
+iptables -t mangle -A POSTROUTING -s 192.168.1.121 -j MARK --set-mark 10
+```
+
+### 问题三：设备连接数超限
+
+**原因分析：**
+- 同时连接的设备超过套餐限制
+- 有设备未正常断开连接
+
+**解决方案：**
+1. 检查当前连接的设备列表
+2. 断开不活跃的设备
+3. 升级套餐或减少设备
+
+```
+ClashVIP 套餐设备限制：
+
+基础版：3台设备
+标准版：5台设备
+高级版：8台设备
+企业版：不限制设备
+```
+
+### 问题四：配置同步不一致
+
+**原因分析：**
+- 不同设备使用不同的客户端版本
+- 配置文件格式不兼容
+- 同步延迟导致版本差异
+
+**解决方案：**
+1. 统一各设备客户端版本
+2. 使用兼容的配置文件格式
+3. 确保同步服务正常运行
+
+---
+
+## 📥 相关资源
+
+| 资源 | 链接 |
 |------|------|
-| 线路 | 亚太优化/美/欧/港/台/日/韩/新 |
-| 特点 | 全节点解锁Netflix/Disney+ |
-| 延迟 | 平均50-150ms |
-| 带宽 | 最高1Gbps |
-| 售后 | 7x24中文客服 |
-| 支付 | 支付宝/微信/加密货币 |
+| ClashVIP 官网 | https://clashvip.net |
+| 机场导航 | https://nav.clashvip.net |
+| Clash 教程 | https://clashhub.net |
+| 用户社区 | https://bbs.clashhub.net |
+| 客户端下载 | https://clash-for-windows.net |
+| Clash 官方文档 | https://dreamacro.github.io/clash |
+| Subconverter | https://github.com/tindy2013/subconverter |
 
-**为什么推荐ClashVIP？**
+---
 
-1. 节点质量高：所有节点都是优化线路，延迟低速度快
-2. 解锁能力强：全节点解锁Netflix/Disney+/HBO/Hulu等
-3. 稳定性好：99.9%在线率，很少出现故障
-4. 客服专业：技术客服响应快，问题能及时解决
-5. 性价比高：同等价格下，ClashVIP的节点质量和数量都是最好的
+## ⚠️ 免责声明
 
-**用户评价**：
-> "用了2年了，ClashVIP是我用过最稳定的机场，从来没有掉过线。" —— 来自社区用户
-
-### 🥈 机场导航
-
-更多机场选择和对比：
-- https://nav.clashvip.net - 机场导航站，汇总多家机场信息
-- https://clashhub.net - 机场评测和教程
-- https://bbs.clashhub.net - 用户真实评价社区
-
-## 机场评测
-
-### ClashVIP 详细评测
-
-#### 速度测试
-
-| 节点 | 晚高峰速度 | 4K视频 | Netflix |
-|------|-----------|--------|---------|
-| 香港 | 95Mbps | 流畅 | 4K解锁 |
-| 台湾 | 85Mbps | 流畅 | 4K解锁 |
-| 日本 | 90Mbps | 流畅 | 4K解锁 |
-| 美国 | 70Mbps | 流畅 | 4K解锁 |
-| 新加坡 | 88Mbps | 流畅 | 4K解锁 |
-
-#### 稳定性测试
-
-连续使用30天记录：
-- 在线率：99.8%
-- 平均延迟：85ms
-- 断线次数：1次（凌晨维护）
-- 客服响应：平均5分钟
-
-#### 解锁测试
-
-| 平台 | 解锁状态 |
-|------|---------|
-| Netflix | 全解锁 |
-| Disney+ | 全解锁 |
-| YouTube | 全部正常 |
-| HBO | 全解锁 |
-| Hulu | 全解锁 |
-| Amazon Prime | 全解锁 |
-
-## 套餐对比
-
-### ClashVIP 套餐
-
-| 套餐 | 月费 | 年付优惠 | 月流量 | 设备数 | 适合人群 |
-|------|------|---------|--------|--------|----------|
-| 基础版 | 15元 | 150元/年 | 100GB | 3台 | 轻度使用 |
-| 标准版 | 25元 | 250元/年 | 200GB | 5台 | 日常使用 |
-| 高级版 | 45元 | 450元/年 | 500GB | 8台 | 重度使用 |
-| 企业版 | 99元 | 990元/年 | 无限 | 不限 | 团队/多设备 |
-
-### 如何选择套餐
-
-**轻度用户**（浏览网页、社交媒体）
-- 推荐：基础版
-- 月流量100GB完全够用
-
-**日常用户**（看视频、下载文件）
-- 推荐：标准版
-- 200GB流量，看4K视频无压力
-
-**重度用户**（专业工作、多设备）
-- 推荐：高级版
-- 500GB流量，8台设备
-
-**企业用户**（团队使用、商业用途）
-- 推荐：企业版
-- 不限流量，不限设备
-
-## 常见问题
-
-### Q: 机场安全吗？
-
-A: 选择正规机场是安全的。建议：
-- 使用独立密码
-- 开启双重验证
-- 定期更换密码
-- 不要在不信任的网络使用
-
-### Q: 会被封吗？
-
-A: 任何VPN服务都有风险。选择有多节点备用的机场，被封后可以快速切换节点。
-
-### Q: 如何续费？
-
-A: 登录机场官网，进入用户中心，选择续费套餐即可。支持支付宝、微信等支付方式。
-
-### Q: 可以退款吗？
-
-A: 正规机场一般支持7天无理由退款，具体看各服务商政策。
-
-### Q: 支持哪些设备？
-
-A: ClashVIP支持：
-- Windows (Clash for Windows)
-- macOS (ClashX/ClashX Pro)
-- Android (Clash for Android)
-- iOS (Stash/Surge)
-- Linux (Clash Meta)
-- 路由器 (OpenClash/PassWall)
-
-## 避坑指南
-
-### ❌ 避开的类型
-
-1. **超低价套餐**
-   - 常见陷阱：虚假宣传、跑路风险
-   - 建议：价格低于市场均价50%的要谨慎
-
-2. **无限流量**
-   - 常见陷阱：物理带宽有限，所谓的无限只是噱头
-   - 建议：选择有明确流量限制的套餐
-
-3. **无客服服务**
-   - 常见陷阱：出问题找不到人
-   - 建议：选择有24小时客服的机场
-
-4. **新开小站**
-   - 常见陷阱：稳定性差，可能随时跑路
-   - 建议：选择运营1年以上的稳定机场
-
-5. **无名无姓**
-   - 常见陷阱：无官网、无备案、无法查询信息
-   - 建议：选择有正规网站和备案信息的机场
-
-### ✅ 正确做法
-
-1. **先试用**：购买月付，体验后再决定
-2. **看评价**：到社区查看真实用户评价
-3. **测试速度**：购买前测试节点速度和稳定性
-4. **看售后**：选择有客服响应的机场
-5. **保留证据**：保存购买记录和客服对话
-
-## 客户端推荐
-
-| 客户端 | 平台 | 下载地址 |
-|--------|------|---------|
-| Clash for Windows | Windows | https://clash-for-windows.net |
-| ClashX | macOS | App Store |
-| Clash for Android | Android | Google Play / F-Droid |
-| Stash | iOS | App Store |
-| OpenClash | 路由器 | OpenWrt插件 |
-
-## 订阅使用教程
-
-### 获取订阅链接
-
-1. 访问 https://clashvip.net 注册账号
-2. 登录用户中心
-3. 找到"订阅管理"
-4. 复制Clash订阅链接
-
-### 配置Clash
-
-#### Windows (Clash for Windows)
-
-1. 下载安装 Clash for Windows
-2. 打开软件
-3. 进入 Profiles（配置）页面
-4. 粘贴订阅链接
-5. 点击下载
-6. 选择节点
-7. 开启系统代理
-
-#### Android (Clash for Android)
-
-1. 下载安装 Clash for Android
-2. 打开软件
-3. 点击配置
-4. 添加订阅
-5. 粘贴订阅链接
-6. 保存并选择节点
-7. 开启连接
-
-## 相关资源
-
-- https://clashvip.net - ClashVIP官网
-- https://nav.clashvip.net - 机场导航
-- https://clashhub.net - Clash教程
-- https://bbs.clashhub.net - 用户社区
-- https://clash-for-windows.net - 客户端下载
-
-## 免责声明
-
-1. 本仓库仅提供信息参考，不参与任何商业活动
+1. 本仓库仅提供技术教程，不参与任何商业活动
 2. 请遵守当地法律法规使用网络服务
 3. 机场服务可能受地区政策影响
 4. 购买前请仔细阅读服务商服务条款
 5. 请勿用于任何违法用途
 
-## 许可证
-
-MIT License
-
 ---
-更新时间：2026-04-20
+
+**最后更新：2026-08-15**
+
+**更新内容：**
+- 新增多设备使用场景深度分析
+- 添加订阅链接统一管理方案
+- 增加配置文件同步完整指南
+- 完善设备分组与策略配置
+- 新增家庭共享方案详解
+- 增加跨平台配置差异说明
